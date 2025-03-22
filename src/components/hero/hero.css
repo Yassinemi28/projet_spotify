@@ -1,0 +1,42 @@
+/*==================
+    2.left site
+====================*/
+
+.left h1 {
+  color: var(--title);
+}
+
+.left p {
+  color: var(--subtitle);
+  font-size: 0.9em;
+  line-height: 1.5em;
+}
+
+.icons .icon-github,
+.icons .icon-linkedin {
+  font-size: 2em;
+  color: var(--subtitle);
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.icons .icon-github:hover,
+.icons .icon-linkedin:hover {
+  font-size: 2.2em;
+  color: var(--icon-hover);
+}
+
+.btn-cv {
+  background-color: var(--bg-header);
+  border: 2px solid rgba(158, 158, 158, 0.39);
+  padding: 10px;
+  border-radius: var(--border-radius);
+  transition: all 0.4s;
+  cursor: pointer;
+  box-shadow: 1px 1px 20px rgba(146, 139, 139, 0.2);
+}
+
+.btn-cv:hover {
+  color: var(--title);
+  border-color: rgba(192, 163, 69, 0.705);
+}
