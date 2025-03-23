@@ -19,15 +19,16 @@ $route = end($uri); // Récupère le dernier segment de l'URL
 
 parse_str($_SERVER['QUERY_STRING'], $queryParams);
 
-// Mettre à jour les chemins dans le switch pour inclure le dossier 'artists'
 switch ($route) {
     case 'artists':  // Route pour tous les artistes
-        require_once 'artists/artists-all.php';  // Correctement pointer vers artists-all.php
+        require_once 'artists/artists-all.php';  
         break;
     case 'artist':  // Route pour un artiste spécifique
-        require_once 'artists/artist.php';  // Correctement pointer vers artist.php
+        require_once 'artists/artist.php'; 
+        break;
+    case 'albums-artist':
+        require_once 'artists/albums-artist.php'; 
         break;
     default:
         echo json_encode(['error' => 'Route not found']);
 }
-
