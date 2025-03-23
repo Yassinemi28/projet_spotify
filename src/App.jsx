@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/home/Home';
+import Artist from './components/artists/Artist';
+import Artists from './components/artists/Artists';
 
 const App = () => {
-  const [artists, setArtists] = useState([]);
-
-  useEffect(() => {
-    // Appel de l'API PHP pour récupérer les artists
-    fetch('http://localhost:8000/api/api.php') // Assure-toi que le chemin est correct
-      .then(response => response.json())
-      .then(data => setArtists(data))
-      .catch(error => console.error('Erreur:', error));
-  }, []);
-
   return (
-    <div>
-      <h1>Liste des Artists</h1>
-      <ul>
-        {artists.map(album => (
-          <li key={album.id}>{album.name}</li> // suppose qu'il y a un champ 'title' dans la table artists
-        ))}
-      </ul>
-    </div>
+    <Router>
+      <Routes>  
+        <Route path="/" element={<Home />} /> 
+        <Route path="/artists" element={<Artists />} /> 
+        <Route path="/artist/:id" element={<Artist />} /> {/* Afficher le profil d'un artiste */}
+      </Routes>
+    </Router>
   );
 };
 
