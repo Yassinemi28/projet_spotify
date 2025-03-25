@@ -18,7 +18,7 @@ albums.cover_small AS album_cover,
 artists.name AS artist_name
 FROM tracks
 JOIN albums ON tracks.album_id = albums.id
-JOIN artists ON albums.artist_id = artists.id LIMIT 25;
+JOIN artists ON albums.artist_id = artists.id LIMIT 50;
 ";
 $result = $connect->query($query);
 $array_songs = array();

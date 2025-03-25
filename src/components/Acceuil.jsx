@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Searchbar from "./Searchbar";
 
 const App = () => {
@@ -57,22 +58,23 @@ const App = () => {
 
   const filteredAlbums = albums.filter((album) =>
     album.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    album.artist.toLowerCase().includes(searchTerm.toLowerCase())
+    album.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    album.genre.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className="bg-gray-900 min-h-screen text-white p-8">
+    <div className="bg-gray-900 text-white p-8 overflow-auto">
       <div className="mb-8">
         <Searchbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </div>
 
       <div className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Musiques</h2>
-        <div className="flex gap-4 overflow-x-scroll scrollbar-hide">
+        <div className="flex gap-4 overflow-x-auto max-w-full">
           {filteredTracks.map((track, index) => (
             <div
               key={index}
-              className="min-w-[200px] bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition"
+              className="flex-shrink-0 min-w-[200px] bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition"
             >
               <img
                 src={track.cover}
@@ -94,43 +96,46 @@ const App = () => {
 
       <div className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Artistes</h2>
-        <div className="flex gap-4 overflow-x-scroll scrollbar-hide">
+        <div className="flex gap-4 overflow-x-auto max-w-full">
           {filteredArtists.map((artist, index) => (
             <div
               key={index}
-              className="min-w-[150px] bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition text-center"
+              className="flex-shrink-0 min-w-[150px] bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition text-center"
             >
               <img
                 src={artist.picture}
                 alt={artist.artist}
                 className="w-full h-32 object-cover rounded-full mb-2"
               />
-              <a href="#" className="text-sm font-semibold hover:underline">
+              <Link to={`/artist/${artist.id}`} className="text-sm font-semibold hover:underline">
                 {artist.artist}
-              </a>
+              </Link>
             </div>
           ))}
         </div>
       </div>
 
       <div className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Albums</h2>
-        <div className="flex gap-4 overflow-x-scroll scrollbar-hide">
+        <h2 className="text-2xl font-semibold mb-4">
+          <Link to="/albums">Albums</Link>
+        </h2>
+        <div className="flex gap-4 overflow-x-auto max-w-full">
           {filteredAlbums.map((album, index) => (
-            <div
+            <Link
+              to={`/album/${album.id}`}
               key={index}
-              className="min-w-[200px] bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition"
+              className="flex-shrink-0 min-w-[200px] bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition"
             >
               <img
                 src={album.cover}
                 alt={album.title}
                 className="w-full h-32 object-cover rounded mb-2"
               />
-              <p className="text-sm font-semibold">{album.title}</p>
-              <a href="#" className="text-xs text-gray-400 hover:underline">
-                {album.artist}
-              </a>
-            </div>
+              <p className="text-sm font-semibold text-center hover:underline">
+                {album.title}
+              </p>
+              <p className="text-xs text-gray-400 text-center">{album.artist}</p>
+            </Link>
           ))}
         </div>
       </div>

@@ -19,8 +19,7 @@ FROM albums
 JOIN artists ON albums.artist_id = artists.id
 JOIN genres_albums ON albums.id = genres_albums.album_id
 JOIN genres ON genres_albums.genre_id = genres.id
-ORDER BY genres.name;
-";
+ORDER BY genres.name";
 
 $result = $connect->query($query);
 
