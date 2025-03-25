@@ -5,7 +5,7 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Accept");
 header("Content-Type: application/json; charset=UTF-8");
 
-require_once("./database.php");
+require_once(__DIR__ . "/database.php");
 
 $query = "
     SELECT 

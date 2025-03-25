@@ -2,9 +2,9 @@
 
 $servername = "127.0.0.1";
 $username = "root";
-$password = "";
+$password = "root";
 try {
-    $connect = new PDO("mysql:host=$servername;dbname=my_spotify", $username, $password);
+    $connect = new PDO("mysql:host=$servername;dbname=spotify_db", $username, $password);
     $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch(PDOException $e) {

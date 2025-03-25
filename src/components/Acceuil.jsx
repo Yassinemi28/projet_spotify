@@ -98,6 +98,7 @@ const App = () => {
         <h2 className="text-2xl font-semibold mb-4">Artistes</h2>
         <div className="flex gap-4 overflow-x-auto max-w-full">
           {filteredArtists.map((artist, index) => (
+            <Link to={`/artist/${artist.id}`} className="text-sm font-semibold hover:underline">
             <div
               key={index}
               className="flex-shrink-0 min-w-[150px] bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition text-center"
@@ -107,10 +108,9 @@ const App = () => {
                 alt={artist.artist}
                 className="w-full h-32 object-cover rounded-full mb-2"
               />
-              <Link to={`/artist/${artist.id}`} className="text-sm font-semibold hover:underline">
                 {artist.artist}
-              </Link>
             </div>
+              </Link>
           ))}
         </div>
       </div>
